@@ -1,14 +1,15 @@
 from flask import Flask, render_template, request, redirect, url_for
 from pymongo import MongoClient
+from dotenv import load_dotenv
 import os
+
+load_dotenv()
 
 print("Current Directory:", os.getcwd())
 
 app = Flask(__name__)
 
-client = MongoClient(
-"mongodb+srv://neel:neel123@cluster0.3nwaelx.mongodb.net/?appName=Cluster0"
-)
+client = os.getenv("MONGO_URL")
 
 db = client["studentdb"]
 collection = db["students"]
