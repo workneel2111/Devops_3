@@ -1,0 +1,10 @@
+#Virtual ENvirnmont
+.venv
+.venv-1
+
+
+#node module
+templates/node_modules
+
+#Environment var
+templates/.env
