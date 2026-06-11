@@ -1,15 +1,47 @@
-from flask import Flask, jsonify
-import json
+from flask import Flask, render_template, request, redirect, url_for
+from pymongo import MongoClient
+import os
+
+print("Current Directory:", os.getcwd())
 
 app = Flask(__name__)
 
-@app.route('/api')
-def get_data():
+client = MongoClient(
+"mongodb+srv://neel:neel123@cluster0.3nwaelx.mongodb.net/?appName=Cluster0"
+)
 
-    with open('data.json', 'r') as file:
-        data = json.load(file)
+db = client["studentdb"]
+collection = db["students"]
 
-    return jsonify(data)
+@app.route('/', methods=['GET','POST'])
+def form():
+
+    if request.method == 'POST':
+
+        try:
+
+            data = {
+                "name": request.form['name'],
+                "email": request.form['email']
+            }
+
+            collection.insert_one(data)
+
+            return redirect(url_for('success'))
+
+        except Exception as e:
+
+            return render_template(
+                'form.html',
+                error=str(e)
+            )
+
+    return render_template('form.html')
+
+@app.route('/success')
+def success():
+
+    return render_template('success.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
