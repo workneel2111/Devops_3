@@ -40,8 +40,8 @@ project/
 ### 1. Clone the Repository
 
 ```bash
-git clone <your-repository-url>
-cd <repository-name>
+git clone https://github.com/workneel2111/Devops_3
+cd Devops_3
 ```
 
 ### 2. Create Virtual Environment
