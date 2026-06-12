@@ -7,4 +7,6 @@
 templates/node_modules
 
 #Environment var
-templates/.env
+.env
+
+
