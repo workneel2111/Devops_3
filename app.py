@@ -5,22 +5,23 @@ import os
 
 load_dotenv()
 
-print("Current Directory:", os.getcwd())
-
 app = Flask(__name__)
 
-client = os.getenv("MONGO_URL")
+# Get MongoDB connection string from .env
+mongo_url = os.getenv("MONGO_URL")
 
+# Create MongoDB client
+client = MongoClient(mongo_url)
+
+# Database and collection
 db = client["studentdb"]
 collection = db["students"]
 
-@app.route('/', methods=['GET','POST'])
+@app.route('/', methods=['GET', 'POST'])
 def form():
 
     if request.method == 'POST':
-
         try:
-
             data = {
                 "name": request.form['name'],
                 "email": request.form['email']
@@ -31,7 +32,6 @@ def form():
             return redirect(url_for('success'))
 
         except Exception as e:
-
             return render_template(
                 'form.html',
                 error=str(e)
@@ -41,8 +41,7 @@ def form():
 
 @app.route('/success')
 def success():
-
     return render_template('success.html')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=int(os.environ.get("PORT", 5000)))
