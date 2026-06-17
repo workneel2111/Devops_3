@@ -2,12 +2,80 @@
 <html>
 <head>
     <title>Success</title>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body{
+            height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            background:linear-gradient(135deg,#667eea,#764ba2);
+        }
+
+        .success-card{
+            background:white;
+            padding:50px;
+            width:450px;
+            text-align:center;
+            border-radius:15px;
+            box-shadow:0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .icon{
+            font-size:70px;
+            margin-bottom:20px;
+        }
+
+        h2{
+            color:#333;
+            margin-bottom:15px;
+        }
+
+        p{
+            color:#666;
+            font-size:16px;
+            line-height:1.6;
+        }
+
+        .btn{
+            display:inline-block;
+            margin-top:25px;
+            padding:12px 25px;
+            background:#667eea;
+            color:white;
+            text-decoration:none;
+            border-radius:8px;
+            transition:0.3s;
+        }
+
+        .btn:hover{
+            background:#5563d6;
+            transform:translateY(-2px);
+        }
+    </style>
 </head>
 <body>
 
-<h2>Data submitted  successfully Kam Karo Malik </h2>
+    <div class="success-card">
 
+        <div class="icon">✅</div>
 
+        <h2>Registration Successful</h2>
+
+        <p>
+            Your information has been submitted successfully and stored in the database.
+        </p>
+
+        <a href="/" class="btn">Register Another User</a>
+
+    </div>
 
 </body>
 </html>
